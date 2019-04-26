@@ -20,6 +20,7 @@ namespace searchColumnInsideFile
                 {
                     string filename = Path.GetFileName(f);
                     var unusedColumns = new List<string>();
+                    var usedColumns = new List<string>();
                     int counterUsed = 0;
                     int counterUnused = 0;
 
@@ -30,31 +31,33 @@ namespace searchColumnInsideFile
                         if (textdata.Contains(searchedColumn))
                         {
                             Console.WriteLine("В файле " + filename + " найден столбец: " + searchedColumn);
+                            usedColumns.Add(searchedColumn);
                             ++counterUsed;
                         }
                         else
                         {
                             Console.WriteLine("В файле " + filename + " не найден столбец: " + searchedColumn);
-                            ++counterUnused;
                             unusedColumns.Add(searchedColumn);
+                            ++counterUnused;
+                           
                         }
                     }
                     Console.WriteLine("                                                                     ");
                     Console.WriteLine("Найдено " + counterUsed + " столбцов из процедуры в файле " + filename);
-                    Console.WriteLine("---------------------------------------------------------------------");
+                    foreach (string value in usedColumns)
+                    {
+                        Console.WriteLine(value);
+                    }
+                    Console.WriteLine("                                                                     ");
                     Console.WriteLine("Не найдено " + counterUnused + " столбцов из процедуры в файле " + filename);
-                    Console.WriteLine("_____________________________________________________________________");
                     foreach (string value in unusedColumns)
                     {
                         Console.WriteLine(value);
                     }
                     Console.WriteLine("---------------------------------------------------------------------");
-                    Console.WriteLine("                                                                     ");
                     Console.WriteLine("---------------------------------------------------------------------");
                 }
-
-                Console.ReadKey();
-
+                    Console.ReadKey();
             }
             catch (UnauthorizedAccessException uAEx)
             {
