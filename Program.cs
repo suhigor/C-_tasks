@@ -13,15 +13,15 @@ namespace searchColumnInsideFile
             {
                 string searchableFolder = @"C:\Users\suhigor\Downloads\дичь\txt";
                 string columnsToBeSearched = @"C:\Users\suhigor\Downloads\дичь\columnsToBeSearched.txt";
-                int counterUsed = 0;
-                int counterUnused = 0;
-                var unusedColumns = new List<string>();
-
+                            
                 string[] columns = File.ReadAllLines(columnsToBeSearched);
                 
                 foreach (string f in Directory.EnumerateFiles(searchableFolder, "*.txt", SearchOption.AllDirectories))
                 {
                     string filename = Path.GetFileName(f);
+                    var unusedColumns = new List<string>();
+                    int counterUsed = 0;
+                    int counterUnused = 0;
 
                     foreach (string searchedColumn in columns)
                     {
@@ -51,8 +51,6 @@ namespace searchColumnInsideFile
                     Console.WriteLine("---------------------------------------------------------------------");
                     Console.WriteLine("                                                                     ");
                     Console.WriteLine("---------------------------------------------------------------------");
-                    counterUsed = 0;
-                    counterUnused = 0;
                 }
 
                 Console.ReadKey();
