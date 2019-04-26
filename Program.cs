@@ -11,8 +11,8 @@ namespace searchColumnInsideFile
             try
             {
 
-                string searchableFolder = @"C:\Users\suhigor\Downloads\дичь\txt";
-                string columnsToBeSearched = @"C:\Users\suhigor\Downloads\дичь\columnsToBeSearched.txt";
+                string searchableFolder = @"C:\Users\txt";
+                string columnsToBeSearched = @"C:\Users\columnsToBeSearched.txt";
 
                 string[] columns = File.ReadAllLines(columnsToBeSearched);
                 
